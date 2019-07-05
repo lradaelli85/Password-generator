@@ -10,7 +10,7 @@ if [ "$#" -eq 1 ]
     if [ "$1" -lt 21 ]
           then
                XARGSN="4"
-			   NO_REPEAT="| grep -vi "'\(.\).*\1'" "
+			   NO_REPEAT="| grep -vi \"\'\(.\).*\1\'\" "
 			   #echo ${NO_REPEAT}
     elif [ "$1" -gt 20 ] && [ "$1" -lt 65 ]
 	  then
@@ -18,7 +18,8 @@ if [ "$#" -eq 1 ]
     else
 	  XARGSN="1"
     fi	  
-    eval "cat /dev/urandom |tr -dc 'a-zA-Z0-9-!@#$%^&*_+=-' |fold -w $1 ${NO_REPEAT} |head -n 16 | xargs -n $XARGSN"
+	#eval "cat /dev/urandom |tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_{|}~' |fold -w $1 ${NO_REPEAT} |head -n 16 | xargs -n $XARGSN"
+	cat /dev/urandom |tr -sdc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_{|}~'  '[:print:]' |fold -w $1  |head -n 16 | xargs -n $XARGSN
   else
     usage
 fi
