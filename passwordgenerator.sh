@@ -16,7 +16,7 @@ if [ "$#" -eq 1 ]
     else
 	  XARGSN="1"
     fi	  
-	cat /dev/urandom |tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_{|}~' |fold -w $1 |head -n 16 | xargs -n $XARGSN
+	cat /dev/urandom |tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_{|}~' |fold -w $1  |head -n 16 | xargs -n $XARGSN
   else
     usage
 fi
